@@ -19,6 +19,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+//  棋子接口
 interface Cell{
     row:number;
     col:number;
@@ -26,6 +27,9 @@ interface Cell{
     getKey():string;
 }
 
+/**
+ * 棋子类
+ */
 class CellClass implements Cell{
     row:number;
     col:number;
@@ -42,15 +46,24 @@ class CellClass implements Cell{
         this.color = isBlack;
     }
 }
+/**
+ * 坐标转化为key
+ */
 function rcToKey(row:number,col:number){
     return row+'-'+col;
 }
+/**
+ * 棋盘基本参数
+ */
 let pan = ref({
     row: 15,
     col: 15,
 })
+/**
+ * 记录最后一次操作坐标， 可用来做提示，和数字计算
+ */
 let last = ref({
-    x : 0,
+    x: 0,
     y: 0
 })
 let isBlack = ref(true);
@@ -59,12 +72,16 @@ let winObj = ref({
     title: "",
     isShowTitle: true
 })
-
+/**
+ * 开始游戏
+ */
 function startGame(){
     winObj.value.isShowTitle = false;
     cellMap.clear();
 }
-
+/**
+ * 添加棋子
+ */
 function addCell(row:number, col:number){
     let key = rcToKey(row , col);
     if(winObj.value.isShowTitle||cellMap.get(key)) return;
@@ -78,12 +95,19 @@ function addCell(row:number, col:number){
     }
     isBlack.value = !isBlack.value;
 }
-
+/**
+ * 
+ * 根据坐标获取棋子
+ * @param row 
+ * @param col 
+ */
 function getCellPoint(row:number,col:number): Cell | undefined{
     let cell = cellMap.get(rcToKey(row,col));
     return cell
 }
-// 判断胜负
+/**
+ * 判断胜负
+ **/ 
 function isWin(cell: Cell): boolean{
     let fnList = getAllFn(cell);
     for(let i = 0 ; i < fnList.length; i++){
@@ -110,21 +134,25 @@ function getAllFn(cell:Cell): Array<(row:number)=>string>{
     let fnList:Array<(row:number)=>string> = [];
     let x = cell.row;
     let y = cell.col;
+    //  斜线函数
     fnList.push((row: number) =>{
         let a = y - x;
         let key: string = rcToKey(row, row + a)
         return key;
     })
+    // 反斜线函数
     fnList.push((row: number) =>{
         let a = y + x;
         let key: string = rcToKey(row, -row + a)
         return key;
     })
+    // 竖线函数
     fnList.push((row: number) =>{
         let a = y;
         let key: string = rcToKey(row, a)
         return key;
     })
+    // 水平线函数
     fnList.push((col: number) =>{
         let a = x;
         let key: string = rcToKey(x, col)
