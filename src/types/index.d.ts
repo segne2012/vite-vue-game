@@ -1,11 +1,11 @@
 // 基本参数
-export declare interface baseOptions {
+declare interface baseOptions {
     rowCount: number;
     colCount: number;
     boomCount: number;
 }
 // 单元格对象
-export declare interface Cell {
+declare interface Cell {
     y: number;
     x: number;
     isBoom?: boolean;
@@ -14,9 +14,14 @@ export declare interface Cell {
     count?: number;
 }
 
-export enum CellFlag {
+declare enum CellFlag {
     empty = 0,
     flag = 1,
     question = 2,
 }
 
+export {
+    baseOptions,
+    Cell,
+    CellFlag,
+}

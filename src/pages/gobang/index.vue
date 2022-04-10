@@ -7,7 +7,7 @@
                 <span class="line c" :class="{'bolder': col === 1||col===pan.col}" v-if="row < pan.col"></span>
                 <span class="basePoint" v-if="(row===4||row===12)&&(col ===4 || col===12) || (col === 8 && row === 8)"></span>
                 <span class="lastPoint" v-if="last.x === row&& last.y === col"></span>
-                <span class="cellPoint" v-if="getCellPoint(row,col)" :class="{'black':getCellPoint(row,col).color}" ></span>
+                <span class="cellPoint" v-if="getCellPoint(row,col)" :class="{'black': getCellPoint(row,col)?.color}" ></span>
             </span>
         </span>
         <div class="winTip" v-if="winObj.isShowTitle">

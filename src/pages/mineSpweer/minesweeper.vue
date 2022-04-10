@@ -34,18 +34,14 @@
 
 <script setup lang="ts">
 import { Ref, ref, reactive, computed } from "vue";
-import { getNearCell, baseOptions, CellFlag } from './js/utils'
+import { getNearCell } from './js/utils'
+import type {Cell, baseOptions} from '../../types/index.d';
 import moment from 'moment'
-// import { Cell } from './js/index.d'
 // 单元格对象
-//#chushihua
-interface Cell {
-    y: number;
-    x: number;
-    isBoom?: boolean;
-    flag?: CellFlag;
-    isOpen?: boolean;
-    count?: number;
+enum CellFlag {
+    empty = 0,
+    flag = 1,
+    question = 2,
 }
 //  是否开始游戏
 let state = ref(false);
@@ -68,8 +64,6 @@ let time = ref(0);
 let showTime = computed(()=>{
     return moment.duration(time.value)
 })
-
-console.log(moment.duration(1000), '----moment');
 
 function initCells(){
     cellList.value = Array.from(
