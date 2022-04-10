@@ -1,5 +1,5 @@
 import {CellFlag} from "./index.d"
-// import {Cell, baseOptions} from "../../../types/index.d"
+import { Cell, baseOptions } from "../../../types/index.d"
 import {Ref} from 'vue'
 
 let cellList: Ref<Cell[][]>
@@ -24,8 +24,5 @@ function hasCell(x: number, y: number , cells: Cell[]) {
 }
 export default {}
 export {
-    getNearCell,
-    Cell,
-    baseOptions,
-    CellFlag
+    getNearCell
 }
