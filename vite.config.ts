@@ -11,5 +11,6 @@ export default defineConfig({
         AntDesignVueResolver(),
       ],
     }),
-  ]
+  ],
+  base: '/vite-vue-game',
 })
