@@ -77,6 +77,10 @@ let winObj = ref({
  */
 function startGame(){
     winObj.value.isShowTitle = false;
+    last.value = {
+        x: -1,
+        y: -1
+    }
     cellMap.clear();
 }
 /**
