@@ -65,7 +65,10 @@ let pan = ref({
 let last = ref({
     x: 0,
     y: 0
-})
+});
+/**
+ * 记录棋盘棋子
+ */
 let isBlack = ref(true);
 let cellMap: Map<string, Cell> = new Map();
 let winObj = ref({
