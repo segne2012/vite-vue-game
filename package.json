@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "publish": "npm run build && mv ./dist/* ./docs",
     "preview": "vite preview"
   },
   "dependencies": {
