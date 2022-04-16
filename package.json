@@ -3,6 +3,10 @@
   "private": true,
   "version": "0.0.1",
   "typings": "/types/index.d.ts",
+  "author": {
+    "name": "segen2012",
+    "url": "https://segne2012.github.io/vite-vue-game/"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
