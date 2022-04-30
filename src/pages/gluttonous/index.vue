@@ -225,11 +225,11 @@ onMounted(() => {
     })
 </script>
 <template>
-    <div class="gluttonous" :style="{ height: height * 10 + 'px' }">
-        <div class="snake" :style="{ width: width * 10 + 'px', height: height * 10 + 'px' }">
+    <div class="gluttonous" :style="{ height: height * 12 + 'px' }">
+        <div class="snake" :style="{ width: width * 12 + 'px', height: height * 12 + 'px' }">
             <div class="body" v-for="(body, index) in snake.body" :key="index"
-                :style="{ left: body.x * 10 + 'px', top: body.y * 10 + 'px' }"></div>
-            <div class="food" :style="{ left: food.x * 10 + 'px', top: food.y * 10 + 'px' }"></div>
+                :style="{ left: body.x * 12 + 'px', top: body.y * 12 + 'px' }"></div>
+            <div class="food" :style="{ left: food.x * 12 + 'px', top: food.y * 12 + 'px' }"></div>
         </div>
         <div class="winTip" v-if="winObj.isShowTitle">
             {{ winObj.title }}
@@ -260,8 +260,8 @@ onMounted(() => {
             flex-direction: row;
             flex-grow: 0;
             justify-content: center;
-            width: 10px;
-            height: 10px;
+            width: 12px;
+            height: 12px;
             box-shadow: inset 0 0 0 1px #999;
             background-color: #666;
         }
