@@ -212,18 +212,23 @@ function endTime(){
         justify-content: center;
         justify-items: center;
         .col {
-            width: 18px;
-            height: 18px;
-            border: 1px solid rgba(200, 200, 200, 0.7);
+            width: 20px;
+            height: 20px;
             flex-grow: initial;
             flex-shrink: 0;
             text-align: center;
-            line-height: 18px;
+            line-height: 20px;
             .open,
             .close {
                 width: 100%;
                 height: 100%;
                 font-size: 10px;
+                // box-shadow: inset 2px 0 0 0 #fff, inset 0 2px 0 0 #eee, inset -2px 0 0 0 #999, inset 0 -2px 0 0 #666; */
+                border: 2px solid;
+                border-top-color: #eee;
+                border-left-color: #e0e0e0;
+                border-right-color: #a0a0a0;
+                border-bottom-color: #aaa;
             }
             .open {
                 background: #f0f0f0;
