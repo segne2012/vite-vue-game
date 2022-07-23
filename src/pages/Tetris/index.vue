@@ -61,7 +61,9 @@ type Graphics = {
 let world:Ref<Cell[][]> = ref([]);
 let nextView: Ref<Cell[][]> = ref([]);
 let nextGraphics:Ref<Graphics> = ref(nextCell());
-let graphics:Ref<Graphics> = ref(nextCell());
+let graphics: Ref<Graphics> = ref(nextCell());
+
+let downIng = false;
 
 function init() {
     nextView.value = Array.from(
@@ -273,6 +275,7 @@ function keyEvent(e: KeyboardEvent) {
     switch (e.key) {
         case "ArrowDown":
             console.log("下");
+            downIng = true;
             break;
         case "ArrowLeft":
             graphics.value.cells.forEach(cell => {
@@ -304,6 +307,17 @@ function keyEvent(e: KeyboardEvent) {
             break;
         default:
             console.log("其他");
+            break;
+    }
+}
+
+// 键盘谈起事件
+function keyUpEvent(e: KeyboardEvent) {
+    switch (e.key) {
+        case "ArrowDown":
+            downIng = false;
+            break;
+        default:
             break;
     }
 }
@@ -380,7 +394,7 @@ function checkLine(){
 let timer: number = 500;
 let timerId: number = 0;
 function tick() {
-    if(new Date().getTime() - timerId > timer * Math.pow(0.8,(level.value - 1))){
+    if(new Date().getTime() - timerId > (downIng? 30 : timer * Math.pow(0.8,(level.value - 1)))){
         timerId = new Date().getTime();
         if(isDown()) {
             toNextGraphics();
@@ -394,7 +408,7 @@ function tick() {
     window.requestAnimationFrame(tick);
 }
 
-function isDown(){
+function isDown() {
     let flag = false;
     let list = graphics.value.cells;
     for(let i = 0 ; i < list.length; i++){
@@ -416,11 +430,13 @@ onMounted(() => {
     init();
     gameOver.value = true;
     window.addEventListener('keydown', keyEvent);
+    window.addEventListener('keyup', keyUpEvent);
 })
 
 
 onUnmounted(() => {
     window.removeEventListener('keydown', keyEvent);
+    window.removeEventListener('keyup', keyUpEvent);
 })
 </script>
 
