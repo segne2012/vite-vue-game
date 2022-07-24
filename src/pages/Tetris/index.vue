@@ -260,6 +260,9 @@ function nextCell(t = -1, r=-1) : Graphics{
     };
     return cells
 }
+/**
+ * 入口函数
+ */
 function start() {
     init();
     gameOver.value = false;
@@ -269,7 +272,7 @@ function start() {
     nextGraphics.value.render(2,2, nextView);
     tick();
 }
-
+// 键盘按下事件
 function keyEvent(e: KeyboardEvent) {
     let isMove = true;
     switch (e.key) {

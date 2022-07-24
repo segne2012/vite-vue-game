@@ -34,17 +34,40 @@ const games = [
     },
 ];
 
+let cssList = [
+    {
+        path: "/css/loading",
+        name: "加载动画",
+        icon: "Tetris",
+        iconComp: Tetris,
+        component: () => import("../css/loading/loading1.vue"),
+    },
+    {
+        path: "/css/glass",
+        name: "毛玻璃",
+        icon: "Tetris",
+        iconComp: Tetris,
+        component: () => import("../css/filter/glass.vue"),
+    },
+];
+
 const routes = [
     {
         path: "/",
         name: "/",
-        redirect: "/gameList",
-    },
-    {
-        path: "/gameList",
-        name: "gameList",
-        component: () => import("../pages/index.vue"),
-        children: [...games],
+        redirect: "/css",
+        component: () => import("../home/index.vue"),
+        children:[{
+            path: "/css",
+            name: "css",
+            component: () => import("../css/index.vue"),
+            children: [...cssList],
+        },{
+            path: "/gameList",
+            name: "gameList",
+            component: () => import("../pages/index.vue"),
+            children: [...games],
+        }],
     },
 ];
 
@@ -54,4 +77,4 @@ const router = createRouter({
 });
 
 export default router;
-export { games };
+export { games, cssList };
