@@ -58,6 +58,8 @@
                 width: 15px;
                 height: 15px;
                 background: #00ff00;
+                // display: none;
+                opacity: 0;
                 box-shadow: 0 0 2px 0px #00ff00,
                     0 0 4px 0px #00ff00,
                     0 0 8px 0px #00ff00;
@@ -82,9 +84,11 @@
 @keyframes size{
     0%{
         transform: scale(1);
+        opacity: 1;
     }
     80%, 100%{
         transform: scale(0);
+        opacity: 1;
     }
 }
 </style>
